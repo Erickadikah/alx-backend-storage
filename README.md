@@ -1,4 +1,4 @@
 # Back-End Storage
 
 
-* [MySQL advanced](0x00. MySQL advanc)
+* [0x00. MySQL advance](MySQL advanced)
