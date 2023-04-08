@@ -4,14 +4,13 @@
 -- COALESCE variable holding bands that have not split
 -- assumed their current year is 2022
 
-SELECT band_name,
-COALESCE(split, 2022) - formed) AS lifespan
+SELECT band_name, (COALESCE(split, 2022) - formed) AS lifespan
 FROM metal_bands
 WHERE style LIKE '%Glam rock%'
 ORDER BY
 CASE WHEN (COALENSCE(split, 2022) - formed) != 0
 	THEN lifespan
-ELSE 0
+	ELSE 0
 END DESC,
 band_name  DESC;
 
