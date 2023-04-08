@@ -1,10 +1,18 @@
 -- function to divide INT value being passed in
+-- this  function does not perform any SQL operatio on the database.
 
 DELIMITER //
 
-CREATE PROCEDURE SafeDiv (IN a INT, IN b INT, OUT result INT)
+CREATE FUNCTION SafeDiv (a INT, b INT)
+RETURNS FLOAT
+DETERMINISTIC
+NO SQL
 BEGIN
-	SET result = a / b;
+	IF b = 0 THEN
+		RETURN 0;
+	ELSE
+		RETURN a / b;
+	END IF;
 END//
 
 DELIMITER ;
