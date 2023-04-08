@@ -2,4 +2,4 @@
 -- first name  and score  are retrieved
 -- shows easier retrival of data
 
-CREATE INDEX idx_name_first_score ON names(name(1), score));
+CREATE INDEX idx_name_first_score ON names(name(1), score);
