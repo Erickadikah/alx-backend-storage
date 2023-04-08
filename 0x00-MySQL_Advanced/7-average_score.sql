@@ -5,13 +5,13 @@
 
 DELIMITER //
 
-CREATE PROCEDURE ComputeAverageScoreForUser(IN student_id INT)
+CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 BEGIN
     DECLARE avg_score DECIMAL(10,2);
 
-    SELECT AVG(score) INTO avg_score FROM scores WHERE student_id = student_id;
-
-    INSERT INTO average_scores(student_id, avg_score) VALUES (student_id, avg_score);
+    SELECT AVG(score) INTO avg_score FROM corrections WHERE corrections.user_id = user_id;
+    UPDATE users  SET average_score = avg_score
+    WHERE id = user_id;
 END //
 
 DELIMITER ;
