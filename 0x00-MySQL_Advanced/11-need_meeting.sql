@@ -4,8 +4,8 @@
 -- specifies the laternative condition
 -- checks where for < 80 
 
-CREATE VIEW need_meeting AS
-SELECT name
+CREATE VIEW need_meeting 
+AS SELECT name
 FROM students
-WHERE (score < 80)
+WHERE (score =< 80)
 AND (last_meeting IS NULL OR last_meeting > DATE_SUB(DATE(Now()), INTERVAL 1 MONTH));
