@@ -1,4 +1,5 @@
 -- SQL index that creates an index_name_first_score on table names
--- first letter of name and score  are retrieved
+-- first name  and score  are retrieved
+-- shows easier retrival of data
 
-CREATE INDEX idx_name_first_score, score FROM names;
+CREATE INDEX idx_name_first_score ON names(name(1), score));
