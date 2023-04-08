@@ -8,7 +8,7 @@ SELECT band_name, (COALESCE(split, 2022) - formed) AS lifespan
 FROM metal_bands
 WHERE style LIKE '%Glam rock%'
 ORDER BY
-CASE WHEN (COALENSCE(split, 2022) - formed) != 0
+CASE WHEN (COALESCE(split, 2022) - formed) != 0
 	THEN lifespan
 	ELSE 0
 END DESC,
