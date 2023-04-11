@@ -1,3 +1,2 @@
 //inserting a document in collecion school
-use school
 db.school.insertOne({ "name": "Holberton school"})
