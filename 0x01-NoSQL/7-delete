@@ -1,0 +1,2 @@
+//this sript deletes all documents with name="Holberton school" in collection school
+db.school.deleteOne({name : "Holberton school"})
