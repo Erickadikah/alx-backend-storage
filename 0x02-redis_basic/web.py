@@ -23,7 +23,7 @@ def count_access(method):
         cached_key = "cached:{}".format(url)
         cached_response = r.get(cached_key)
         if cached_response:
-            return cached_response.decode('utf-8')
+            return req.content.decode('utf-8')
         r.setex(cached_key, 10, html_content)
         return html_content
     return wrapper
