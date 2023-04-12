@@ -33,6 +33,7 @@ def count_access(method):
 def get_page(url: str) -> str:
     """
     Returns the response from a request on the url
+    expires after 10sec
     """
     req = requests.get(url)
     return req.text
