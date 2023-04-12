@@ -4,5 +4,5 @@
 
 def schools_by_topic(mongo_collection, topic):
     """takes in topic as an argument"""
-    result = mongo_collection.find({"topic": topic})
+    result = mongo_collection.find({"topics": {"$in": [topic]}})
     return result
