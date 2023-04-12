@@ -24,15 +24,17 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key, fn:Optional[Callable]= None) -> Union[str, bytes,int,
-                                                                    bytes,
-                                                                    int,
-                                                                    float,
-                                                                    None]:
-        if not self._redis.get(key):
+    def get(self, key, fn: Optional[Callable] = None) -> Union[str,
+                                                               bytes,
+                                                               int,
+                                                               float,
+                                                               None]:
+        value = self._redis.get(key)
+        if not value:
             return None
-        if fn is None:
-            return (self.__redis.get(key))
+        if fn:
+            return value == fn(value)
+        return value
 
     def get_str(self, key: str) -> str:
         """method to retrieve a stored string method"""
