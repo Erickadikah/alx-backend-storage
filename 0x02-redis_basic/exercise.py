@@ -9,6 +9,7 @@ import uuid
 from typing import Union, Optional, Callable
 import functools
 
+
 class Cache:
     def __init__(self):
         """store method to take data as argument and return sring
@@ -45,7 +46,6 @@ class Cache:
         """methotd to retrieve a stored interger volume in storage
         """
         return sel.get(key, int)
-
 
     def count_calls(method: Callable) -> Callable:
         """
