@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Checking the status of Nginx logs stored in MongoDB"""
+"""Checking the status of Nginx logs stored in MongoDB
+    Database: logs
+    Collection: nginx
+    method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+"""
 
 from pymongo import MongoClient
 
@@ -16,10 +20,13 @@ if __name__ == '__main__':
     status_check = nginx.count_documents(
         {"$and": [{"method": "GET"}, {"path": "/status"}]})
 
-    print("{} logs\nMethods:\n\
-            method GET: {}\n\
-            method POST:{}\n\
-            method PUT : {}\n\
-            method PATCH: {}\n\
-            method DELETE:{}\n {} status check"
-          .format(log, get, post, put, patch, delete, status_check))
+    print('''{} logs
+    Methods:
+            method GET: {}
+            method POST:{}
+            method PUT : {}
+            method PATCH: {}
+            method DELETE:{}
+    {} status check'''
+          .format(log, get, post, put, patch, delete, status_check)
+          )
