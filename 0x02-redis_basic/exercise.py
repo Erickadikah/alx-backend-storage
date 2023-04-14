@@ -7,7 +7,7 @@
 import redis
 import uuid
 from typing import Union, Optional, Callable
-
+import functools
 
 class Cache:
     def __init__(self):
@@ -30,6 +30,7 @@ class Cache:
                                                                float,
                                                                None]:
         value = self._redis.get(key)
+        """we are checking if the value from redis exists"""
         if not value:
             return None
         if fn:
@@ -44,3 +45,17 @@ class Cache:
         """methotd to retrieve a stored interger volume in storage
         """
         return sel.get(key, int)
+
+
+    def count_calls(method: Callable) -> Callable:
+        """
+        increments a counter for each time a method on Cache is called
+        does a count
+        """
+        @wraps(method)
+        def count_wrapper(*args, **kwargs):
+            func = method(*args, **kwargs)
+            key = method.__qualname__
+            args[0].redis.incr(key)
+            return func
+        return count_wrapper
