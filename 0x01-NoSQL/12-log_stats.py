@@ -22,6 +22,4 @@ if __name__ == '__main__':
             method PUT : {}\n\
             method PATCH: {}\n\
             method DELETE:{}\n {} status check"
-                    .format(log, get, post, put, patch, delete, status_check))
-
-
+          .format(log, get, post, put, patch, delete, status_check))
