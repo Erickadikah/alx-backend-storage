@@ -45,7 +45,7 @@ class Cache:
     def get_int(self, key: str) -> int:
         """methotd to retrieve a stored interger volume in storage
         """
-        return sel.get(key, int)
+        return self.get(key, int)
 
     def count_calls(method: Callable) -> Callable:
         """
